@@ -1,3 +1,7 @@
+body {
+  background-color: #c3c3c3;
+}
+
 // Menu
 .menu-list {
   display: flex;
@@ -7,43 +11,43 @@
   top: 0;
   width: 100%;
   overflow: hidden;
-  background-color: #999;
+  background-color: #777;
   margin: 0;
 
   &__item {
-    padding: 14px;
     text-align: center;
+    padding: 15px;
   }
 
   &__link {
     color: #f2f2f2;
     text-decoration: none;
+    padding: 15px;
   }
 }
 
-.active {
+.menu-active {
   background-color: #333;
-  padding: 14px;
 }
 
-// Cast
-.cast-list {
-  list-style: none;
+.Genres-list {
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
 
-  &__img {
-    width: 200px;
+  &__item {
+    padding-right: 10px;
   }
 }
 
 // MovieDetails
 .MovieDetails {
   display: flex;
+  background-color: #333;
+  color: #ffffff;
 
   &__desc {
-    width: 50%;
+    
   }
 
   &__img {
@@ -53,5 +57,35 @@
 }
 
 .Content {
-  padding-top: 60px;
+  padding: 50px 15px;
+}
+
+// Additional info
+.additional {
+  padding: 15px;
+  background-color: #c3c3c3;
+
+  &-list {
+    display: flex;
+    list-style: none;
+    padding: 0 15px;
+  }
+
+  &-title {
+    padding: 0 15px;
+  }
+
+  &-list__item {
+    padding-right: 10px;
+  }
+
+  &-list__link {
+    text-decoration: none;
+    color: #222;
+  }
+
+  &-list__active {
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+  }
 }

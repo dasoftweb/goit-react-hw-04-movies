@@ -1,8 +1,13 @@
 import { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
-import MoviesApi from '../services/movies-api';
+import { getMovieById } from '../services/movies-api';
 import Cast from '../views/Cast';
-import noimage from '../images/noimage.svg';
+import Reviews from '../views/Reviews';
+import {
+  normalizePosterPath,
+  normalizeDate,
+  normalizeScore,
+} from '../components/FetchNormalizer';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -11,33 +16,17 @@ class MovieDetailsPage extends Component {
 
   async componentDidMount() {
     const { movieId } = this.props.match.params;
-    const response = await MoviesApi.getMovie(movieId);
+    const response = await getMovieById(movieId);
     const { poster_path, release_date, vote_average } = response.data;
     this.setState({
       movie: {
         ...response.data,
-        poster_path: this.normalizePosterPath(poster_path),
-        release_date: this.normalizeDate(release_date),
-        vote_average: this.normalizeScore(vote_average),
+        poster_path: normalizePosterPath(poster_path),
+        release_date: normalizeDate(release_date),
+        vote_average: normalizeScore(vote_average),
       },
     });
   }
-
-  normalizeDate = date => {
-    const toDate = new Date(date);
-    return toDate.getFullYear();
-  };
-
-  normalizePosterPath = url => {
-    if (url) {
-      return 'https://image.tmdb.org/t/p/w500' + url;
-    }
-    return noimage;
-  };
-
-  normalizeScore = score => {
-    return score * 10;
-  };
 
   render() {
     const {
@@ -46,15 +35,18 @@ class MovieDetailsPage extends Component {
       title,
       vote_average,
       overview,
-      id,
+      genres,
     } = this.state.movie;
-    // console.log(this.state.movie);
     const { match } = this.props;
     return (
       <>
         <div className="MovieDetails Content">
           <div className="MovieDetails__poster">
-            <img className="MovieDetails__img" src={poster_path}></img>
+            <img
+              className="MovieDetails__img"
+              src={poster_path}
+              alt={title}
+            ></img>
           </div>
 
           <div className="MovieDetails__desc">
@@ -65,21 +57,44 @@ class MovieDetailsPage extends Component {
             <h3>Overview</h3>
             <p>{overview}</p>
             <h3>Genres</h3>
-            <p>ganres here</p>
+            {genres ? (
+              <ul className="Genres-list">
+                {genres.map(ganre => (
+                  <li className="Genres-list__item" key={ganre.id}>
+                    # {ganre.name}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No data</p>
+            )}
           </div>
         </div>
-        <div>
-            <h5>Additional information</h5>
-            <ul>
-              <li>
-                <NavLink to={`${match.url}/cast`}>Cast</NavLink>
-              </li>
-              <li>
-                <NavLink to={`${match.url}/reviews`}>Reviews</NavLink>
-              </li>
-            </ul>
-            <Route path={`${match.path}/cast`} component={Cast}></Route>
-          </div>
+        <div className="additional">
+          <h3 className="additional-title">Additional information</h3>
+          <ul className="additional-list">
+            <li className="additional-list__item">
+              <NavLink
+                to={`${match.url}/cast`}
+                className="additional-list__link"
+                activeClassName="additional-list__active"
+              >
+                Cast
+              </NavLink>
+            </li>
+            <li className="additional-list__item">
+              <NavLink
+                to={`${match.url}/reviews`}
+                className="additional-list__link"
+                activeClassName="additional-list__active"
+              >
+                Reviews
+              </NavLink>
+            </li>
+          </ul>
+          <Route path={`${match.path}/cast`} component={Cast}></Route>
+          <Route path={`${match.path}/reviews`} component={Reviews}></Route>
+        </div>
       </>
     );
   }

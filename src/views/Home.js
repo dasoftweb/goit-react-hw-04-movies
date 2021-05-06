@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
-import MoviesApi from '../services/movies-api';
+import {getTranding} from '../services/movies-api';
+import MoviesList from '../components/MoviesList/MoviesList';
+
 
 class Home extends Component {
   state = {
@@ -8,23 +9,16 @@ class Home extends Component {
   };
 
   async componentDidMount() {
-    const response = await MoviesApi.getTranding();
+    const response = await getTranding();
     this.setState({ movies: response.data.results });
   }
 
   render() {
-    console.log(this.state.movies);
-    console.log(this.props.match.url);
+    console.log();
     return (
       <div className='Content'>
         <h1>Trending today</h1>
-        <ul>
-          {this.state.movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-            </li>
-          ))}
-        </ul>
+        <MoviesList movies={this.state.movies} />
       </div>
     );
   }

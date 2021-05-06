@@ -1,0 +1,14 @@
+.MoviesList {
+  list-style: none;
+  padding: 0;
+
+  &-item {
+    padding: 10px 0;
+    font-weight: bold;
+
+    &__link {
+      color: #333333;
+      text-decoration: none;
+    }
+  }
+}

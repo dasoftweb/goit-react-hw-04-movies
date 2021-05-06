@@ -12,12 +12,12 @@ class App extends Component {
       <>
         <ul className="menu-list">
           <li className="menu-list__item"> 
-            <NavLink exact={true} to="/" className="menu-list__link" activeClassName="active">
+            <NavLink exact={true} to="/" className="menu-list__link" activeClassName="menu-active">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/movies" className="menu-list__link" activeClassName="active">
+            <NavLink to="/movies" className="menu-list__link" activeClassName="menu-active">
               Movies
             </NavLink>
           </li>

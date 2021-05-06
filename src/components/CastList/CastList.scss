@@ -1,0 +1,15 @@
+.CastList {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 15px;
+  
+    &__img {
+      width: 200px;
+    }
+  
+    &__text {
+      width: 200px;
+    }
+  }
