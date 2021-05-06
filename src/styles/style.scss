@@ -1,0 +1,11 @@
+// Cast
+.cast-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__img {
+    width: 200px;
+  }
+}
