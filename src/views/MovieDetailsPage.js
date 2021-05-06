@@ -4,7 +4,6 @@ import MoviesApi from '../services/movies-api';
 import Cast from '../views/Cast';
 import noimage from '../images/noimage.svg';
 
-
 class MovieDetailsPage extends Component {
   state = {
     movie: {},
@@ -53,29 +52,34 @@ class MovieDetailsPage extends Component {
     const { match } = this.props;
     return (
       <>
-        <div>
-          <img src={poster_path}></img>
-          <h1>
-            {title} ({release_date})
-          </h1>
-          <p>User Score: {vote_average}%</p>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-          <h3>Genres</h3>
-          <p>ganres here</p>
+        <div className="MovieDetails Content">
+          <div className="MovieDetails__poster">
+            <img className="MovieDetails__img" src={poster_path}></img>
+          </div>
+
+          <div className="MovieDetails__desc">
+            <h1>
+              {title} ({release_date})
+            </h1>
+            <p>User Score: {vote_average}%</p>
+            <h3>Overview</h3>
+            <p>{overview}</p>
+            <h3>Genres</h3>
+            <p>ganres here</p>
+          </div>
         </div>
         <div>
-          <h5>Additional information</h5>
-          <ul>
-            <li>
-              <NavLink to={`${match.url}/cast`}>Cast</NavLink>
-            </li>
-            <li>
-              <NavLink to={`${match.url}/reviews`}>Reviews</NavLink>
-            </li>
-          </ul>
-          <Route path={`${match.path}/cast`} component={Cast}></Route>
-        </div>
+            <h5>Additional information</h5>
+            <ul>
+              <li>
+                <NavLink to={`${match.url}/cast`}>Cast</NavLink>
+              </li>
+              <li>
+                <NavLink to={`${match.url}/reviews`}>Reviews</NavLink>
+              </li>
+            </ul>
+            <Route path={`${match.path}/cast`} component={Cast}></Route>
+          </div>
       </>
     );
   }

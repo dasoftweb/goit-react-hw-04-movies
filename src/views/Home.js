@@ -16,7 +16,7 @@ class Home extends Component {
     console.log(this.state.movies);
     console.log(this.props.match.url);
     return (
-      <>
+      <div className='Content'>
         <h1>Trending today</h1>
         <ul>
           {this.state.movies.map(movie => (
@@ -25,7 +25,7 @@ class Home extends Component {
             </li>
           ))}
         </ul>
-      </>
+      </div>
     );
   }
 }

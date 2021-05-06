@@ -10,14 +10,14 @@ class App extends Component {
   render() {
     return (
       <>
-        <ul>
-          <li>
-            <NavLink to="/" className="" activeClassName="">
+        <ul className="menu-list">
+          <li className="menu-list__item"> 
+            <NavLink exact={true} to="/" className="menu-list__link" activeClassName="active">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/movies" className="" activeClassName="">
+            <NavLink to="/movies" className="menu-list__link" activeClassName="active">
               Movies
             </NavLink>
           </li>

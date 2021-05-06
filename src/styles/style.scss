@@ -1,11 +1,57 @@
+// Menu
+.menu-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: #999;
+  margin: 0;
+
+  &__item {
+    padding: 14px;
+    text-align: center;
+  }
+
+  &__link {
+    color: #f2f2f2;
+    text-decoration: none;
+  }
+}
+
+.active {
+  background-color: #333;
+  padding: 14px;
+}
+
 // Cast
 .cast-list {
   list-style: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 
   &__img {
     width: 200px;
   }
+}
+
+// MovieDetails
+.MovieDetails {
+  display: flex;
+
+  &__desc {
+    width: 50%;
+  }
+
+  &__img {
+    width: 300px;
+    padding: 15px;
+  }
+}
+
+.Content {
+  padding-top: 60px;
 }
