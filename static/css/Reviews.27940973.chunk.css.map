@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/ReviewsList/ReviewsList.scss"],"names":[],"mappings":"AAAA,aACI,SAAU,CAEV,mBACE,eAAgB","file":"Reviews.27940973.chunk.css","sourcesContent":[".ReviewsList {\r\n    padding: 0;\r\n  \r\n    &__item {\r\n      list-style: none;\r\n    }\r\n  }"]}
