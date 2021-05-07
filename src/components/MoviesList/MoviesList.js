@@ -1,12 +1,20 @@
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
+import { normalizePosterPath } from '../../components/FetchNormalizer';
 import './MoviesList.scss';
 
-const MoviesList = ({ movies }) => (
+const MoviesList = ({ movies, location }) => (
   <ul className="MoviesList">
-    {movies.map(({ id, title }) => (
+    {movies.map(({ id, poster_path, title }) => (
       <li className="MoviesList-item" key={id}>
-        <NavLink to={`/movies/${id}`} className="MoviesList-item__link">
+        <NavLink
+          to={{
+            pathname: `/movies/${id}`,
+            state: { from: location },
+          }}
+          className="MoviesList-item__link"
+        >
+          <img className="MoviesList-img" src={normalizePosterPath(poster_path)} alt={`${title} poster`} />
           {title}
         </NavLink>
       </li>
@@ -18,4 +26,4 @@ MoviesList.propTypes = {
   movies: PropTypes.array.isRequired,
 };
 
-export default MoviesList;
+export default withRouter(MoviesList);

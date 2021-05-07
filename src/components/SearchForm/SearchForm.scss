@@ -1,7 +1,7 @@
 .SearchForm {
   display: flex;
   align-items: center;
-  padding: 15px 0;
+  justify-content: center;
 
   &-input {
     height: 45px;
@@ -11,6 +11,7 @@
     font-size: 20px;
     padding-left: 10px;
     padding-right: 10px;
+    width: 100%;
   }
 
   &-button {

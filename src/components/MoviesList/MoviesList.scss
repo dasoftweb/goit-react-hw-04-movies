@@ -1,14 +1,26 @@
 .MoviesList {
-  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 0;
 
   &-item {
-    padding: 10px 0;
+    list-style: none;
     font-weight: bold;
 
     &__link {
-      color: #333333;
+      display: block;
       text-decoration: none;
+      color: #333333;
+      max-width: 200px;
+      overflow: hidden;
+      text-align: center;
     }
+  }
+
+  &-img {
+    display: block;
+    width: 200px;
+    margin-bottom: 20px;
   }
 }

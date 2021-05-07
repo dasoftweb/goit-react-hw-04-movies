@@ -1,7 +1,6 @@
 import { Component } from 'react';
-import {getTranding} from '../services/movies-api';
+import { getTranding } from '../services/movies-api';
 import MoviesList from '../components/MoviesList/MoviesList';
-
 
 class Home extends Component {
   state = {
@@ -16,8 +15,8 @@ class Home extends Component {
   render() {
     console.log();
     return (
-      <div className='Content'>
-        <h1>Trending today</h1>
+      <div className="Content">
+        <h1 className="Content-title">Trending today</h1>
         <MoviesList movies={this.state.movies} />
       </div>
     );

@@ -1,34 +1,39 @@
-import { Component } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Component, Suspense, lazy } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Loader from './components/Loader/Loader';
 // Components
-import Home from './views/Home';
-import MoviesPage from './views/MoviesPage';
-import MovieDetailsPage from './views/MovieDetailsPage';
-import NotFound from './views/NotFound';
+import AppBar from './components/AppBar/AppBar';
+import routes from './routes';
+
+const Home = lazy(() => import('./views/Home' /* webpackChunkName: "Home" */));
+const MoviesPage = lazy(() =>
+  import('./views/MoviesPage' /* webpackChunkName: "MoviesPage" */),
+);
+const MovieDetailsPage = lazy(() =>
+  import('./views/MovieDetailsPage' /* webpackChunkName: "MovieDetailsPage" */),
+);
+const NotFound = lazy(() =>
+  import('./views/NotFound' /* webpackChunkName: "NotFound" */),
+);
 
 class App extends Component {
   render() {
     return (
-      <>
-        <ul className="menu-list">
-          <li className="menu-list__item"> 
-            <NavLink exact={true} to="/" className="menu-list__link" activeClassName="menu-active">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/movies" className="menu-list__link" activeClassName="menu-active">
-              Movies
-            </NavLink>
-          </li>
-        </ul>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/movies/:movieId" component={MovieDetailsPage} />
-          <Route path="/movies" component={MoviesPage} />
-          <Route path="/" component={NotFound} />
-        </Switch>
-      </>
+      <div className="container">
+        <header className="AppBar">
+          <Suspense fallback={<Loader />}>
+            <AppBar />
+          </Suspense>
+        </header>
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <Route exact path={routes.home} component={Home} />
+            <Route path={routes.movieDetails} component={MovieDetailsPage} />
+            <Route path={routes.movies} component={MoviesPage} />
+            <Route component={NotFound} />
+          </Switch>
+        </Suspense>
+      </div>
     );
   }
 }

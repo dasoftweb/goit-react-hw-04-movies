@@ -3,19 +3,25 @@ import './CastList.scss';
 import { normalizePosterPath } from '../FetchNormalizer';
 
 const CastList = ({ cast }) => (
-  <ul className="CastList">
-    {cast.map(({ id, profile_path, name, character }) => (
-      <li className="CastList__item" key={id}>
-        <img
-          className="CastList__img"
-          src={normalizePosterPath(profile_path)}
-          alt={name}
-        ></img>
-        <h4 className="CastList__title">{name}</h4>
-        <p className="CastList__text">{character}</p>
-      </li>
-    ))}
-  </ul>
+  <>
+    {cast.length > 0 ? (
+      <ul className="CastList">
+        {cast.map(({ id, profile_path, name, character }) => (
+          <li className="CastList__item" key={id}>
+            <img
+              className="CastList__img"
+              src={normalizePosterPath(profile_path)}
+              alt={name}
+            ></img>
+            <h4 className="CastList__title">{name}</h4>
+            <p className="CastList__text">{character}</p>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <h5 className='Content-title'>Sorry! There is no cast information for this movie :(</h5>
+    )}
+  </>
 );
 
 CastList.propTypes = {
