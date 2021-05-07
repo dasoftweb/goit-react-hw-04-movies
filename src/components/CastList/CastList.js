@@ -7,14 +7,14 @@ const CastList = ({ cast }) => (
     {cast.length > 0 ? (
       <ul className="CastList">
         {cast.map(({ id, profile_path, name, character }) => (
-          <li className="CastList__item" key={id}>
+          <li className="CastList-item" key={id}>
             <img
-              className="CastList__img"
+              className="CastList-img"
               src={normalizePosterPath(profile_path)}
               alt={name}
             ></img>
-            <h4 className="CastList__title">{name}</h4>
-            <p className="CastList__text">{character}</p>
+            <h4 className="CastList-title">{name}</h4>
+            <p className="CastList-text">{character}</p>
           </li>
         ))}
       </ul>

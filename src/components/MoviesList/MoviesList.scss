@@ -7,6 +7,7 @@
   &-item {
     list-style: none;
     font-weight: bold;
+    margin-bottom: 15px;
 
     &__link {
       display: block;
@@ -21,6 +22,6 @@
   &-img {
     display: block;
     width: 200px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 }

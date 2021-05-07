@@ -4,12 +4,25 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 0 15px;
+    text-align: center;
   
-    &__img {
+    &-img {
       width: 200px;
     }
-  
-    &__text {
+
+    &-item {
+      margin-bottom: 20px;
+      background-color: #777777;
+      color: #f1f1f1;
+    }
+
+    &-title {
       width: 200px;
+      margin: 0;
+    }
+  
+    &-text {
+      width: 200px;
+      margin: 0;
     }
   }
