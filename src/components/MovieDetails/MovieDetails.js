@@ -78,6 +78,14 @@ const MovieDetails = ({
   </>
 );
 
-MovieDetails.propTypes = {};
+MovieDetails.propTypes = {
+  release_date: PropTypes.string.isRequired,
+  poster_path: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  vote_average: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  genres: PropTypes.string.isRequired,
+  match: PropTypes.string.isRequired,
+};
 
 export default MovieDetails;
