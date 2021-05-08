@@ -14,7 +14,11 @@ const MoviesList = ({ movies, location }) => (
           }}
           className="MoviesList-item__link"
         >
-          <img className="MoviesList-img" src={normalizePosterPath(poster_path)} alt={`${title} poster`} />
+          <img
+            className="MoviesList-img"
+            src={normalizePosterPath(poster_path)}
+            alt={`${title} poster`}
+          />
           {title}
         </NavLink>
       </li>

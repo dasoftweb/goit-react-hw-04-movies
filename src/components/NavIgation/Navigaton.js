@@ -8,7 +8,7 @@ const Navigation = () => {
       <NavLink exact={true} to={routes.home} className="Logo">
         MovieDB
       </NavLink>
-      
+
       <nav className="Navigation">
         <NavLink
           exact={true}

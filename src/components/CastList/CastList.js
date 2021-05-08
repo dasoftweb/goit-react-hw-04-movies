@@ -19,7 +19,9 @@ const CastList = ({ cast }) => (
         ))}
       </ul>
     ) : (
-      <h5 className='Content-title'>Sorry! There is no cast information for this movie :(</h5>
+      <h5 className="Content-title">
+        Sorry! There is no cast information for this movie :(
+      </h5>
     )}
   </>
 );

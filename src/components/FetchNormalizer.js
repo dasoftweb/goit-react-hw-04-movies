@@ -15,5 +15,3 @@ export const normalizeDate = date => {
   const toDate = new Date(date);
   return toDate.getFullYear();
 };
-
-
