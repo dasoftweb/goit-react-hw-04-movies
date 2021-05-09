@@ -9,12 +9,24 @@ class MoviesPage extends Component {
     searchQuery: '',
   };
 
+  componentDidMount() {
+    const { search } = this.props.location;
+    if (search) {
+      this.setState({
+        searchQuery: search.replace(/^\?+/, ''),
+      });
+    }
+  }
+
   async componentDidUpdate(prevProps, PrevState) {
-    if (PrevState.searchQuery !== this.state.searchQuery) {
-      const { searchQuery } = this.state;
+    const { searchQuery } = this.state;
+    if (PrevState.searchQuery !== searchQuery) {
       const response = await getMovieByQuery(searchQuery);
       this.setState({ movies: [...response.data.results] });
     }
+
+    const { location } = this.props;
+    location.search = searchQuery;
   }
 
   onChangeQuery = query => {

@@ -44,7 +44,7 @@ class MovieDetailsPage extends Component {
       overview,
       genres,
     } = this.state.movie;
-    const { match } = this.props;
+    const { match, location } = this.props;
     return (
       <>
         <button
@@ -62,6 +62,7 @@ class MovieDetailsPage extends Component {
           overview={overview}
           genres={genres}
           match={match}
+          location={location}
         />
       </>
     );

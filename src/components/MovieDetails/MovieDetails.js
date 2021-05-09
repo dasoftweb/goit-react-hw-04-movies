@@ -1,3 +1,4 @@
+import { logDOM } from '@testing-library/dom';
 import PropTypes from 'prop-types';
 import { Suspense, lazy } from 'react';
 import { NavLink, Route } from 'react-router-dom';
@@ -20,6 +21,7 @@ const MovieDetails = ({
   overview,
   genres,
   match,
+  location,
 }) => (
   <>
     <div className="MovieDetails">
@@ -53,7 +55,10 @@ const MovieDetails = ({
       <ul className="additional-list">
         <li className="additional-list__item">
           <NavLink
-            to={`${match.url}/cast`}
+            to={{
+              pathname: `${match.url}/cast`,
+              state: { ...location.state },
+            }}
             className="additional-list__link"
             activeClassName="additional-list__active"
           >
@@ -62,7 +67,10 @@ const MovieDetails = ({
         </li>
         <li className="additional-list__item">
           <NavLink
-            to={`${match.url}/reviews`}
+            to={{
+              pathname: `${match.url}/reviews`,
+              state: { ...location.state },
+            }}
             className="additional-list__link"
             activeClassName="additional-list__active"
           >
@@ -70,6 +78,7 @@ const MovieDetails = ({
           </NavLink>
         </li>
       </ul>
+      {console.log(location)}
       <Suspense fallback={<Loader />}>
         <Route path={`${match.path}/cast`} component={Cast}></Route>
         <Route path={`${match.path}/reviews`} component={Reviews}></Route>
@@ -79,13 +88,14 @@ const MovieDetails = ({
 );
 
 MovieDetails.propTypes = {
-  release_date: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  vote_average: PropTypes.string.isRequired,
-  overview: PropTypes.string.isRequired,
-  genres: PropTypes.string.isRequired,
-  match: PropTypes.string.isRequired,
+  release_date: PropTypes.number,
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
+  vote_average: PropTypes.number,
+  overview: PropTypes.string,
+  genres: PropTypes.array,
+  match: PropTypes.object,
+  location: PropTypes.object,
 };
 
 export default MovieDetails;
